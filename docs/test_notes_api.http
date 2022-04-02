@@ -1,0 +1,68 @@
+### Get all notes
+GET http://localhost:8888/notes/
+Accept: application/json
+
+### Get note with id = 1
+GET http://localhost:8888/notes/1
+Accept: application/json
+
+### Get note with id = 2
+GET http://localhost:8888/notes/2
+Accept: application/json
+
+### Get notes with where header has 'API' and likes more or equal 0
+GET http://localhost:8888/notes/?header=like:API&likes=gte:0
+Accept: application/json
+
+### Create new note
+POST http://localhost:8888/notes/
+Accept: application/json
+Content-Type: application/json
+
+{
+  "header": "My Note API",
+  "text": "Text API",
+  "tags": [
+    "a",
+    "a",
+    "www",
+    "GGG"
+  ],
+  "author": "me API"
+}
+
+### Full note info modifing
+PUT http://localhost:8888/notes/1
+Accept: application/json
+Content-Type: application/json
+
+{
+  "id": 1,
+  "header": "---",
+  "text": "----",
+  "tags": [
+    "a",
+    "b",
+    "AAA",
+    "GGG"
+  ],
+  "author": "-",
+  "likes": 888888888,
+  "comments": 0,
+  "color": 0,
+  "created_date": "1635334976",
+  "modified_date": "1635334976"
+}
+
+### Not full note info modifing
+PATCH http://localhost:8888/notes/2
+Accept: application/json
+Content-Type: application/json
+
+{
+  "header": "My Note API",
+  "text": "Text API"
+}
+
+### Note deleting
+DELETE http://localhost:8888/notes/3
