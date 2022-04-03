@@ -1,5 +1,5 @@
 ### Get all notes
-GET http://localhost:8888/notes/
+GET http://127.0.0.1:8888/notes/
 Accept: application/json
 
 ### Get note with id = 1
