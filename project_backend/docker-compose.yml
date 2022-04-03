@@ -1,24 +1,25 @@
 version: "3"
 services:
-  postgres_db:
-    image: postgres
+  db:
+    image: mysql
     restart: always
     environment:
-      POSTGRES_PASSWORD: password
-      POSTGRES_USER: my_user
-      POSTGRES_DB: task_3_database
+      MYSQL_USER: "user"
+      MYSQL_PASSWORD: "password"
+      MYSQL_ROOT_PASSWORD: "password"
+      MYSQL_DATABASE: "my_database"
     ports:
-      - "5432:5432"
+      - "3306:3306"
   api:
-    image: sqlalchemy_tasks:task_3
+    build: .
     depends_on:
-      - postgres_db
+      - db
     ports:
       - "8888:1234"
     environment:
-      DB_DRIVER: postgresql+psycopg2
-      DB_USER: my_user
-      DB_PASSWORD: password
-      DB_HOST: postgres_db
-      DB_PORT: 5432
-      DB_DATABASE: task_3_database
+      DB_DRIVER: "mysql+pymysql"
+      DB_USER: "root"
+      DB_PASSWORD: "password"
+      DB_HOST: "db"
+      DB_PORT: 3306
+      DB_DATABASE: "my_database"
